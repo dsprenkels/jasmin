@@ -512,10 +512,10 @@ module_:
 | x=delimited(LBRACE, X, RBRACE) { x }
 
 %inline rtuple(X):
-| s=separated_list(COMMA, X) { s }
+| s=separated_list(COMMA, X) COMMA? { s }
 
 %inline rtuple1(X):
-| s=separated_nonempty_list(COMMA, X) { s }
+| s=separated_nonempty_list(COMMA, X) COMMA? { s }
 
 %inline tuple(X):
 | s=parens(rtuple(X)) | s=rtuple(X) { s }
